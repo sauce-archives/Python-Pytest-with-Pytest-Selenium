@@ -1,48 +1,42 @@
 import pytest
+from page_sample import SamplePage
 
 
 @pytest.fixture
-def capabilities(capabilities):
-    capabilities['browserName'] = 'Firefox'
-    capabilities['version'] = '59.0'
-    capabilities['platform'] = 'Windows 10'
+def page(selenium):
+    page = SamplePage(selenium)
+    return page
 
-    return capabilities
-
-def test_basic(selenium):
-    selenium.get('https://www.saucedemo.com')
+def test_basic(page):
+    page.visit()
 
     expected = 'Swag Labs'
-    actual = selenium.title
+    actual = page.get_title()
 
     assert expected == actual
 
-def test_failure(selenium):
-    selenium.get('https://www.saucedemo.com')
+def test_failure(page):
+    page.visit()
 
     expected = 'Incorrect Title'
-    actual = selenium.title
+    actual = page.get_title()
 
     assert expected == actual
 
-def test_valid_login(selenium):
-    selenium.get('https://www.saucedemo.com')
+def test_valid_login(page):
+    page.visit()
 
-    selenium.find_element_by_css_selector('[data-test="username"]').send_keys('standard_user')
-    selenium.find_element_by_css_selector('[data-test="password"]').send_keys('secret_sauce')
-    selenium.find_element_by_css_selector('.login-button').click()
+    page.login_as('standard_user', 'secret_sauce')
 
     expected = 'Swag Labs'
-    actual = selenium.find_element_by_id('header_container').text
+    actual = page.get_header_text()
     
     assert expected == actual
 
-def test_invalid_login(selenium):
-    selenium.get('https://www.saucedemo.com')
+def est_invalid_login(page):
+    page.visit()
 
-    selenium.find_element_by_css_selector('[data-test="username"]').send_keys('bad_user')
-    selenium.find_element_by_css_selector('[data-test="password"]').send_keys('bad_pass')
-    selenium.find_element_by_css_selector('.login-button').click()
+    page.login_as('bad_user', 'bad_password')
 
-    assert selenium.find_element_by_css_selector('.error-button').is_displayed()
+    assert page.is_login_error_visible()
 

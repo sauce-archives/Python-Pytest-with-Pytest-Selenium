@@ -1,0 +1,7 @@
+{
+    "capabilities": {
+        "browserName": "Firefox",
+	"platform": "Windows 10",
+	"version": "60.0"
+    }
+}
