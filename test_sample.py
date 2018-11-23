@@ -17,6 +17,14 @@ def test_basic(selenium):
 
     assert expected == actual
 
+def test_failure(selenium):
+    selenium.get('https://www.saucedemo.com')
+
+    expected = 'Incorrect Title'
+    actual = selenium.title
+
+    assert expected == actual
+
 def test_valid_login(selenium):
     selenium.get('https://www.saucedemo.com')
 
