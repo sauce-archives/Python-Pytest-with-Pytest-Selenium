@@ -6,9 +6,9 @@ class SamplePage(object):
         self.driver = selenium
 
     def login_as(self, username, password):
-        self.driver.find_element_by_css_selector('[data-test="username"]').send_keys(username)
-        self.driver.find_element_by_css_selector('[data-test="password"]').send_keys(password)
-        self.driver.find_element_by_css_selector('.login-button').click()
+        self.driver.find_element_by_id('user-name').send_keys(username)
+        self.driver.find_element_by_id('password').send_keys(password)
+        self.driver.find_element_by_css_selector('.btn_action').click()
 
     def get_title(self):
         return self.driver.title
