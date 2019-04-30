@@ -4,9 +4,8 @@ from page_sample import InventoryPage
 
 
 @pytest.fixture
-def page(selenium):
-    page = SamplePage(selenium)
-    return page
+def login(selenium):
+    return LoginPage(selenium)
 
 @pytest.fixture
 def inventory(selenium):

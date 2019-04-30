@@ -1,9 +1,9 @@
 import pytest
 
 
-def test_locked_out_user(page):
-    page.visit()
+def test_locked_out_user(login):
+    login.visit()
 
-    page.login_as("bad", "bad")
+    login.login_as("bad", "bad")
 
-    assert page.is_login_error_visible()
+    assert login.is_login_error_visible()

@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-class SamplePage(object):
+class LoginPage(object):
     
     def __init__(self, selenium):
         self.driver = selenium

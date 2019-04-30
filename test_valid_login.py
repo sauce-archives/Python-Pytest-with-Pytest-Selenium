@@ -1,9 +1,9 @@
 import pytest
 
 
-def test_standard_user(page):
-    page.visit()
+def test_standard_user(login):
+    login.visit()
 
-    page.login_as("standard_user", "secret_sauce")
+    login.login_as("standard_user", "secret_sauce")
 
-    assert "inventory" in page.get_current_url()
+    assert "inventory" in login.get_current_url()
