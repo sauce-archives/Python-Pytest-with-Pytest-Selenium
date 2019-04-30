@@ -1,5 +1,5 @@
 import pytest
-from page_sample import SamplePage
+from page_sample import LoginPage
 from page_sample import InventoryPage
 
 
