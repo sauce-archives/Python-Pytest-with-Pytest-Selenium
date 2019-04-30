@@ -13,11 +13,25 @@ class SamplePage(object):
     def get_title(self):
         return self.driver.title
 
+    def get_current_url(self):
+        return self.driver.current_url
+
     def get_header_text(self):
         return self.driver.find_element_by_id('header_container').text
 
     def is_login_error_visible(self):
-        return self.driver.find_element_by_css_selector('.error-button').is_visible()
+        return self.driver.find_element_by_css_selector('.error-button').is_displayed()
 
     def visit(self):
         self.driver.get('https://www.saucedemo.com')
+    
+class InventoryPage(object):
+    
+    def __init__(self, selenium):
+        self.driver = selenium
+
+    def get_current_url(self):
+        return self.driver.current_url
+
+    def visit(self):
+        self.driver.get('https://www.saucedemo.com/inventory.html')    
