@@ -1,0 +1,9 @@
+{
+    "capabilities": {
+        "deviceName": "Android GoogleAPI Emulator",
+        "deviceOrientation": "portrait",
+	"browserName": "Chrome",
+	"platformVersion": "8.0",
+	"platformName": "Android"
+    }
+}
